@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CALENDAR 1996</title>
+  <style>
+    :root {
+      --bg: #3e163f;         
+      --card: #4b2448;        
+      --ink: #e5e7eb;         
+      --muted: #9ca3af;       
+      --accent: #22d3ee;      
+      --holiday: #f59e0b;     
+      --ring: rgba(97, 24, 75, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 20% 0%, #0b1020 0, var(--bg) 55%);
+    }
+
+    header {
+      text-align: center;
+      padding: 24px 12px 12px;
+    }
+    h1 { margin: 0; font-weight: 800; letter-spacing: .3px; }
+    .subtitle { color: var(--muted); margin-top: 6px; }
+
+    .year {
+      width: min(1400px, 95vw);
+      margin: 16px auto 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .month {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.25);
+      overflow: hidden;
+    }
+    .month h2 {
+      margin: 0; padding: 10px 12px; font-size: 18px; letter-spacing: .3px;
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.03);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      padding: 10px;
+    }
+
+    .dow { color: var(--muted); font-size: 12px; text-align: center; padding: 6px 0 8px; }
+
+    .pad { visibility: hidden; }
+
+    .day, .dayx {
+      display: grid; place-items: center;
+      aspect-ratio: 1/1; border-radius: 10px;
+      font-weight: 600; text-decoration: none; color: var(--ink);
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+    }
+    .day:hover { outline: 3px solid var(--ring); }
+
+    .day.holiday { color: #111827; background: var(--holiday); border-color: transparent; }
+
+    .panel-wrap {
+      position: sticky; bottom: 0; inset-inline: 0; margin-top: 20px;
+      background: linear-gradient(180deg, rgba(2,6,23,0), rgba(2,6,23,.75) 22%, rgba(2,6,23,1) 55%);
+      padding: 22px 0 28px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .panel {
+      width: min(900px, 92vw);
+      margin: 0 auto;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 12px;
+    }
+    .panel .msg { grid-column: 1 / -1; color: var(--muted); }
+    .card { display: none; grid-column: 1 / -1; }
+    :target.card { display: block; }
+
+    .holiday-row {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 6px 0;
+    }
+    .badge { font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; background: var(--holiday); color: #111827; }
+    .close { color: var(--muted); text-decoration: none; font-weight: 700; padding: 6px 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); }
+    .close:hover { color: var(--ink); border-color: rgba(255,255,255,.3); }
+
+    @media (max-width: 1100px) {
+      .year { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px) {
+      .year { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CALENDAR 1996</h1>
+    <div class="subtitle"> </div>
+  </header>
+
+  <main class="year">
+    
+    <section class="month">
+      <h2>January 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <a class="day holiday" href="#h-1996-01-01" title="New Year">1</a>
+        <span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span>
+        <span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span>
+        <span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span>
+        <span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span>
+        <span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>February 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span>
+        <span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span>
+        <span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span>
+        <span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span>
+        <a class="day holiday" href="#h-1996-25-02" title="EDSA People Power Anniversary">25</a>
+        <span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>March 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+       
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span>
+        <span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span>
+        <span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span>
+        <span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span>
+        <span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>April 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+    
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span>
+        <a class="day holiday" href="#h-1996-04-04" title="Maundy Thursday">4</a>
+        <a class="day holiday" href="#h-1996-05-04" title="Good Friday">5</a>
+        <span class="dayx">6</span><span class="dayx">7</span>
+        <span class="dayx">8</span>
+        <a class="day holiday" href="#h-1996-09-04" title="Araw ng Kagitingan">9</a><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span>
+        <span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span>
+        <span class="dayx">22</span>
+        <span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span>
+        <span class="dayx">29</span><span class="dayx">30</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>May 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <span class="pad">.</span><span class="pad">.</span>
+        <a class="day holiday" href="#h-1996-01-05" title="Labor Day">1</a>
+        <span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span>
+        <span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span>
+        <span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span>
+        <span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span>
+        <span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>June 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+    
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span>
+        <a class="day holiday" href="#h-1996-12-06" title="Independence Day">3</a>
+        <span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span>
+        <span class="dayx">10</span><span class="dayx">11</span>
+        <span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span>
+        <span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span>
+        <span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span><span class="dayx">30</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>July 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span>
+        <span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span>
+        <span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span>
+        <span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span>
+        <span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>August 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sunday</div>
+        
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span>
+        <span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span>
+        <span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span>
+        <span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span>
+        <a class="day holiday" href="#h-1996-26-08" title="National Heroes Day">26</a>
+        <span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>September 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span>
+        <span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span>
+        <span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span>
+        <span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span>
+        <span class="dayx">29</span><span class="dayx">30</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>October 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        
+        <span class="pad">.</span>
+        <span class="dayx">1</span><span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span>
+        <span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span>
+        <span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span>
+        <span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span><span class="dayx">26</span><span class="dayx">27</span>
+        <span class="dayx">28</span><span class="dayx">29</span><span class="dayx">30</span><span class="dayx">31</span>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>November 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <a class="day holiday" href="#h-1996-01-11" title="All Saints' Day">1</a>
+        <span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span>
+        <span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span><span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span>
+        <span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span><span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span>
+        <span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span><span class="dayx">23</span><span class="dayx">24</span><span class="dayx">25</span>
+        <span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span>
+        <a class="day holiday" href="#h-1996-30-11" title="Bonifacio Day">30</a>
+      </div>
+    </section>
+
+    <section class="month">
+      <h2>December 1996</h2>
+      <div class="grid">
+        <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+        <span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span><span class="pad">.</span>
+        <span class="dayx">1</span>
+        <span class="dayx">2</span><span class="dayx">3</span><span class="dayx">4</span><span class="dayx">5</span><span class="dayx">6</span><span class="dayx">7</span><span class="dayx">8</span>
+        <span class="dayx">9</span><span class="dayx">10</span><span class="dayx">11</span><span class="dayx">12</span><span class="dayx">13</span><span class="dayx">14</span><span class="dayx">15</span>
+        <span class="dayx">16</span><span class="dayx">17</span><span class="dayx">18</span><span class="dayx">19</span><span class="dayx">20</span><span class="dayx">21</span><span class="dayx">22</span>
+        <span class="dayx">24</span>
+        <a class="day holiday" href="#h-1996-25-12" title="Christmas">25</a>         
+        <span class="dayx">26</span><span class="dayx">27</span><span class="dayx">28</span><span class="dayx">29</span>
+        <a class="day holiday" href="#h-1996-30-12" title="Rizal Day">30</a>
+        <a class="day holiday" href="#h-1996-31-12" title="Last Day of the Year">31</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="panel-wrap">
+    <div class="panel">
+      
+      <div id="h-1996-01-01" class="card"> 
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>New Year- New Year is the celebration of the beginning of a new calendar year. It is a time for people to reflect on the past, make resolutions for the future, and celebrate with fireworks, parties, and gatherings with family and friends.</strong> — January 1, 1996</div>
+        <td width="40%">
+      </div>
+      <div id="h-1996-25-02" class="card"> 
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>EDSA People Power Anniversary - The EDSA People Power Anniversary commemorates the peaceful revolution of February 1986 in the Philippines, when millions of Filipinos gathered at EDSA (Epifanio de los Santos Avenue) to protest against dictatorship. Through unity, courage, and nonviolent action, the movement restored democracy and freedom in the country.</strong> — February 25, 1996</div>
+      </div>
+      <div id="h-1996-04-04" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Maundy Thursday - Maundy Thursday is part of Holy Week in the Christian tradition. It commemorates the Last Supper of Jesus Christ with His disciples before His betrayal and crucifixion. On this day, many Christians attend church services, reflect on Jesus’ sacrifice, and participate in rituals such as the washing of the feet, which symbolizes humility and service.</strong> — April 4, 1996</div>
+      </div>
+      <div id="h-1996-05-04" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Good Friday - Good Friday is one of the most solemn days in the Christian calendar. It commemorates the crucifixion and death of Jesus Christ at Calvary. On this day, many Christians observe fasting, prayer, and church services to reflect on Christ’s suffering and sacrifice for humanity’s salvation.</strong> — April 5, 1996</div>
+      </div>
+      <div id="h-1996-09-04" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Araw ng Kagitingan - Araw ng Kagitingan, or Day of Valor, honors the bravery of Filipino and American soldiers who defended Bataan during World War II. It commemorates the Fall of Bataan in 1942 and the sacrifices made by those who endured the Bataan Death March. The day serves as a reminder of courage, resilience, and patriotism.</strong> — April 9, 1996</div>
+      </div>
+      <div id="h-1996-01-05" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Labor Day - Labor Day is dedicated to honoring the contributions and hard work of workers across different fields. It recognizes their role in building society and promoting progress. In the Philippines, it is also a day when labor groups hold activities, rallies, and celebrations to advocate for workers’ rights and better working conditions.</strong> — May 1, 1996</div>
+      </div>
+      <div id="h-1996-12-06" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Independence Day - Independence Day marks the proclamation of Philippine independence from Spanish rule on June 12, 1898, in Kawit, Cavite. It is a celebration of freedom, sovereignty, and national pride. On this day, Filipinos honor the heroes who fought for liberty and reflect on the nation’s journey toward self-determination.</strong> — June 12, 1996</div>
+      </div>
+      <div id="h-1996-26-08" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>National Heroes Day - National Heroes Day honors the bravery and sacrifice of all Filipino heroes, both known and unknown, who fought for the nation’s freedom and dignity. It is observed every last Monday of August and serves as a reminder of patriotism, unity, and the enduring spirit of the Filipino people.</strong> — August 26, 1996</div>
+      </div>
+      <div id="h-1996-01-11" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>All Saints' Day - All Saints’ Day is a Christian tradition that honors all the saints and departed faithful. In the Philippines, families visit cemeteries, light candles, offer flowers, and pray for their loved ones who have passed away. Even though it wasn’t legally declared as a nationwide holiday in 1996, it was widely practiced and respected as a day of remembrance.</strong> — November 1, 1996</div>
+      </div>
+      <div id="h-1996-30-11" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Bonifacio Day - Bonifacio Day commemorates the birth anniversary of Andres Bonifacio (1863–1897), known as the Father of the Philippine Revolution. He was the founder of the Katipunan, the secret society that launched the fight against Spanish colonization. This day honors his courage, leadership, and his role in igniting the Filipinos’ struggle for independence.</strong> — November 30, 1996</div>
+      </div>
+      <div id="h-1996-25-12" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Christmas Day - Christmas is more than just a holiday—it is a season of light and hope. It brings families together, fills hearts with joy, and reminds us of the gift of love shown through the birth of Jesus Christ. It is a time when kindness shines brighter than the lights on a Christmas tree, and giving becomes the true spirit of celebration.</strong> — December 25, 1996</div>
+      </div>
+      <div id="h-1996-30-12" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Rizal Day - Rizal Day commemorates the death anniversary of Dr. José Rizal, the national hero of the Philippines, who was executed on December 30, 1896, in Bagumbayan (now Luneta, Manila). The day honors his patriotism, writings, and sacrifice, which inspired the Filipino people to fight for freedom from Spanish rule.</strong> — December 30, 1996</div>
+      </div>
+      <div id="h-1996-31-12" class="card">
+        <div class="holiday-row"><span class="badge">Holiday</span><strong>Last Day of the Year - The Last Day of the Year is a special non-working holiday in the Philippines. It is a time for families and friends to prepare for New Year’s Eve celebrations, marked by gatherings, food, and traditions such as fireworks and “media noche” (midnight feast). It symbolizes saying goodbye to the past year and welcoming the opportunities of the year to come.</strong> — December 31, 1996</div>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>
